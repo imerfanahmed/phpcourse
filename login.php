@@ -1,19 +1,36 @@
 <?php require 'partials/header.view.php'; ?>
-<form class="container mt-5 w-50 m-auto border border-lg rounded p-5">
+<?php
+require_once "./core/helper.php";
+if(isset($_SESSION['user_id'])){
+    redirect('details.php');
+}
+?>
+<form action="controller/LoginController.php"
+        method="POST"
+       class="container mt-5 w-50 m-auto border border-lg rounded p-5">
     <h1>Login Form</h1>
+    <?php
+    // session_start();
+    if(isset($_SESSION['msg'])){
+        echo "<div class='alert alert-success'>".$_SESSION['msg']."</div>";
+        unset($_SESSION['msg']);
+    }
+
+    if(isset($_SESSION['error'])){
+      echo "<div class='alert alert-danger'>".$_SESSION['error']."</div>";
+      unset($_SESSION['error']);
+  }
+
+    ?>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <label class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <label class="form-label">Password</label>
+    <input type="password" name="password" class="form-control">
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <?php require 'partials/footer.view.php'; ?>

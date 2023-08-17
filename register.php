@@ -1,4 +1,10 @@
 <?php require 'partials/header.view.php'; ?>
+<?php
+require_once "./core/helper.php";
+if(isset($_SESSION['user_id'])){
+    redirect('details.php');
+}
+?>
 <form  action="controller/RegisterController.php"
         method="POST" enctype="multipart/form-data"
         class="container mt-5 w-50 m-auto border border-lg rounded p-5">

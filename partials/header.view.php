@@ -17,7 +17,7 @@
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="#">Erfan Organaizaion</a>
+            <a class="navbar-brand" href="index.php">Erfan Organaizaion</a>
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,12 +32,32 @@
 
 
                 <ul class="navbar-nav mt-2 mt-lg-0">
-                    <li class="nav-item">
+                    <?php
+                    session_start();
+                    if(isset($_SESSION['user_id'])){
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="details.php">Student Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="controller/logoutController.php">Logout</a>
+                        </li>
+
+                        <?php
+                    }else{
+                    ?>
+                      <li class="nav-item">
                         <a class="nav-link" href="login.php">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="register.php">Register</a>
                     </li>
+                    <?php
+
+                        }
+
+                    ?>
+
                 </ul>
 
 
