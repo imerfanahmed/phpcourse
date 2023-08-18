@@ -5,7 +5,7 @@ require_once "./core/Database.php";
 // session_start();
 $db = new Database();
 // $id = $_SESSION['user_id'];
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users WHERE isAdmin='0'";
 $result = $db->query($sql);
 
 

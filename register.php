@@ -56,7 +56,7 @@ if(isset($_SESSION['user_id'])){
 
   <div class="mb-3">
     <label class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" name="confirm_pa+ssword" required>
+    <input type="password" class="form-control" name="confirm_password" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Choose Profile Image</label>

@@ -30,5 +30,12 @@ if(!$result){
 
 //5. login user
 $_SESSION['user_id'] = $result['id'];
+
+if($result['isAdmin'] == '1'){
+    redirect('admin.php');
+}
+else{
+
 redirect('details.php');
 
+}

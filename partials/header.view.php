@@ -15,7 +15,26 @@
 
 <body class="d-flex flex-column min-vh-100">
   <header>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <?php
+    //check if admin or not
+    require_once "./core/helper.php";
+    require_once "./core/Database.php";
+    session_start();
+
+    if(isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+        $db = new Database();
+        $sql = "SELECT * FROM users WHERE id='$user_id'";
+        $result = $db->query($sql);
+        $result = $result->fetch(PDO::FETCH_ASSOC);
+        $is_admin = $result['isAdmin'];
+    }else{
+        $is_admin = '0';
+    }
+
+    $nav_bg = $is_admin ? 'bg-danger' : 'bg-dark';
+    ?>
+    <nav class="navbar navbar-expand-sm navbar-dark <?=$nav_bg?>" >
           <div class="container">
             <a class="navbar-brand" href="index.php">Erfan Organaizaion</a>
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -33,57 +52,41 @@
 
                 <ul class="navbar-nav mt-2 mt-lg-0">
                     <?php
-                    session_start();
-                    if(isset($_SESSION['user_id'])){
-                    ?>
+                    if(isset($_SESSION['user_id']) ? $is_admin == '1' : false){
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin.php">Admin Panel</a>
+                        </li>
+                        <?php
+                    }
+                    if(isset($_SESSION['user_id']) ? $is_admin == '0' : false){
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="details.php">Student Panel</a>
                         </li>
+                        <?php
+                    }
+                    ?>
+
+                    <?php
+                    if(isset($_SESSION['user_id'])){
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="controller/logoutController.php">Logout</a>
                         </li>
-
                         <?php
                     }else{
-                    ?>
-                      <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
-                    </li>
-                    <?php
-                        }
-                    ?>
-
-                    <?php
-                    require_once "./core/helper.php";
-                    require_once "./core/Database.php";
-
-                    $user_id = $_SESSION['user_id'];
-
-                    if(isset($_SESSION['user_id'])){
-                        $db = new Database();
-
-                        $sql = "SELECT * FROM users WHERE id='$user_id'";
-                        $result = $db->query($sql);
-                        $result = $result->fetch(PDO::FETCH_ASSOC);
-
-                        //check if user is admin or not
-                        if($result['isAdmin'] == '1'){
-                            //$_SESSION['error'] = "You are not authorized to access this page";
-                            ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="admin.php">Admin Panel</a>
-                            </li>
-                            <?php
-                        }
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.php">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register.php">Register</a>
+                        </li>
+                        <?php
                     }
 
                     ?>
-
-
-
                 </ul>
 
 

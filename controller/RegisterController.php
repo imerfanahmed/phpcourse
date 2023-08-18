@@ -17,6 +17,7 @@ $password = sha1($_POST['password']);
 $confirm_password = sha1($_POST['confirm_password']);
 
 
+// dd($_POST);
 //2. validate confirm password
 if($password != $confirm_password){
     //redirect to register.php
@@ -38,7 +39,9 @@ $result = $db->query($sql);
 $result = $result->fetch(PDO::FETCH_ASSOC);
 if($result){
     //redirect to register.php
-    redirect('register.php?error=Username already exists');
+    $_SESSION['error'] = "Username Already Exists";
+    redirect('register.php');
+    die();
 }
 
 //5. check if email already exists

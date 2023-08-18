@@ -22,6 +22,16 @@ if(isset($_SESSION['user_id'])){
   }
 
     ?>
+  <!-- admin details -->
+  <p>
+    Admin User details:
+    <br>
+    email: admin@admin.com
+    <br>
+    password: password
+
+  </p>
+
   <div class="mb-3">
     <label class="form-label">Email address</label>
     <input type="email" name="email" class="form-control" required>
