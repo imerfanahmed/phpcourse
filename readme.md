@@ -1,4 +1,15 @@
-<!-- add image -->
+## Installation
+1. Clone the repository
+2. Import database.sql located in DB_DUMP directory into your database system.
+3. Change the database credentials in core/config.php
+4. Change the base url in core/config.php
+   (Very Important).
+
+## Usage
+1. Admin Login
+    - Email: admin@admin.com
+    - Password: password
+
 # Index Page
 ![image](readme_images/1.png)
 # Student Details Page
