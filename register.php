@@ -11,37 +11,37 @@ if(isset($_SESSION['user_id'])){
     <h1>Register Form</h1>
   <div class="mb-3">
     <label class="form-label">Username</label>
-    <input type="text" class="form-control" name="username">
+    <input type="text" class="form-control" name="username" required>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Name</label>
-    <input type="text" class="form-control" name="name">
+    <input type="text" class="form-control" name="name" required>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Email</label>
-    <input type="email" class="form-control" name="email">
+    <input type="email" class="form-control" name="email" required>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Contact No</label>
-    <input type="number" class="form-control" name="contact">
+    <input type="number" class="form-control" name="contact" required>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Address</label>
-    <input type="text" class="form-control" name="address">
+    <input type="text" class="form-control" name="address" required>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Password</label>
-    <input type="password" class="form-control" name="password">
+    <input type="password" class="form-control" name="password" required>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" name="confirm_password">
+    <input type="password" class="form-control" name="confirm_password" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Choose Profile Image</label>

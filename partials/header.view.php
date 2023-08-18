@@ -53,10 +53,36 @@
                         <a class="nav-link" href="register.php">Register</a>
                     </li>
                     <?php
-
                         }
+                    ?>
+
+                    <?php
+                    require_once "./core/helper.php";
+                    require_once "./core/Database.php";
+
+                    $user_id = $_SESSION['user_id'];
+
+                    if(isset($_SESSION['user_id'])){
+                        $db = new Database();
+
+                        $sql = "SELECT * FROM users WHERE id='$user_id'";
+                        $result = $db->query($sql);
+                        $result = $result->fetch(PDO::FETCH_ASSOC);
+
+                        //check if user is admin or not
+                        if($result['isAdmin'] == '1'){
+                            //$_SESSION['error'] = "You are not authorized to access this page";
+                            ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="admin.php">Admin Panel</a>
+                            </li>
+                            <?php
+                        }
+                    }
 
                     ?>
+
+
 
                 </ul>
 

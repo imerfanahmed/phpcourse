@@ -16,7 +16,7 @@ if(!function_exists('dd')){
 if(!function_exists('redirect')){
     function redirect($location){
         global $base_path;
-        $location = $base_path.'/'.$location;
+        $location = $base_path.$location;
         header("Location: $location");
     }
 }
