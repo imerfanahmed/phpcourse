@@ -8,6 +8,21 @@ if(isset($_SESSION['user_id'])){
 <form  action="controller/RegisterController.php"
         method="POST" enctype="multipart/form-data"
         class="container mt-5 w-50 m-auto border border-lg rounded p-5">
+
+
+        <?php
+    // session_start();
+        if(isset($_SESSION['msg'])){
+            echo "<div class='alert alert-success'>".$_SESSION['msg']."</div>";
+            unset($_SESSION['msg']);
+        }
+
+        if(isset($_SESSION['error'])){
+          echo "<div class='alert alert-danger'>".$_SESSION['error']."</div>";
+          unset($_SESSION['error']);
+      }
+
+    ?>
     <h1>Register Form</h1>
   <div class="mb-3">
     <label class="form-label">Username</label>
@@ -41,7 +56,7 @@ if(isset($_SESSION['user_id'])){
 
   <div class="mb-3">
     <label class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" name="confirm_password" required>
+    <input type="password" class="form-control" name="confirm_pa+ssword" required>
   </div>
   <div class="mb-3">
     <label class="form-label">Choose Profile Image</label>

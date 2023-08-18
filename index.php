@@ -13,7 +13,7 @@ $result = $db->query($sql);
 <main class="container mt-5">
 
     <div class="alert alert-danger h4 text-center">
-    Dont forget configure env details in config.php
+        Dont forget configure env details in core/config.php
     </div>
     <div class="text-center h1">
         Student Details

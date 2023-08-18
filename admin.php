@@ -31,6 +31,19 @@ $students = $students->fetchAll(PDO::FETCH_ASSOC);
 
 <main class="container m-5 mx-auto">
     <div class="row text-center ">
+    <?php
+          // session_start();
+
+          if(isset($_SESSION['msg'])){
+              echo "<div class='alert alert-success'>".$_SESSION['msg']."</div>";
+              unset($_SESSION['msg']);
+          }
+
+          if(isset($_SESSION['error'])){
+            echo "<div class='alert alert-danger'>".$_SESSION['error']."</div>";
+            unset($_SESSION['error']);
+        }
+      ?>
       <div class="col-4 p-3 rounded">
         <!-- Hover added -->
         <div class="list-group">
@@ -64,9 +77,9 @@ $students = $students->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=$student['address']?></td>
                 <td>
 
-                  <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                  <a href="edit-student.php?id=<?=$student['id']?>" class="btn btn-sm btn-warning">Edit</a>
                   <a href="controller/Admin/delete.php?id=<?=$student['id']?>" class="btn btn-sm btn-danger">Delete</a>
-                  <a href="details.php" class="btn btn-sm btn-success">Details</a>
+                  <a href="details.php?id=<?=$student['id']?>" class="btn btn-sm btn-success">Details</a>
                 </td>
               </tr>
 
@@ -81,8 +94,6 @@ $students = $students->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </main>
-
-
 
 
 <!-- Modal -->

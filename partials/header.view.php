@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
           <div class="container">

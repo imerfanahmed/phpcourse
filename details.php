@@ -37,7 +37,11 @@ $result = $result->fetch(PDO::FETCH_ASSOC);
         <div class="col-md-3">
             <picture>
                 <!-- <source srcset="sourceset" type="image/svg+xml"> -->
-                <img src="https://placehold.jp/150x150.png" class="img-fluid" alt="image desc">
+
+                <?php
+                    $image_path = $result['image'] ? 'uploads/'.$result['image'] : 'https://placehold.jp/250x250.png';
+                ?>
+                <img src="<?=$image_path?>" class="img-fluid" alt="image desc">
               </picture>
         </div>
 
@@ -149,12 +153,12 @@ $result = $result->fetch(PDO::FETCH_ASSOC);
         <form action="controller/paymentController.php" method="POST">
             <div class="mb-3">
                 <label class="form-label">Payment Date</label>
-                <input type="date" name="pay_date" class="form-control">
+                <input type="date" name="pay_date" class="form-control" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Amount</label>
-                <input type="number" name="amount" class="form-control">
+                <input type="number" name="amount" class="form-control" required>
             </div>
       </div>
       <div class="modal-footer">

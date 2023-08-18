@@ -14,13 +14,15 @@ $email = $_POST['email'];
 $contact = $_POST['contact'];
 $address = $_POST['address'];
 $password = sha1($_POST['password']);
-$confirm_password = sha1($_POST['password']);
+$confirm_password = sha1($_POST['confirm_password']);
 
 
 //2. validate confirm password
 if($password != $confirm_password){
     //redirect to register.php
-    redirect('register.php?error=Password and Confirm Password does not match');
+    $_SESSION['error'] = "Password and Confirm Password does not match";
+    redirect('register.php');
+    die();
 }
 
 //3. validate email
@@ -58,6 +60,7 @@ if(file_exists($_FILES['image']['tmp_name']) || is_uploaded_file($_FILES['image'
     $image_size = $image['size'];
     $image_error = $image['error'];
     $image_type = $image['type'];
+    // dd($image);
 
     //get file extension
     $image_extension = explode('.', $image_name);
@@ -99,11 +102,27 @@ if($result){
     //save into session
     //$_SESSION['user_id'] = $db->connection->lastInsertId();
     $_SESSION['msg'] = "Registration Successful";
-    redirect('login.php');
+
+    //check if login is from admin or user
+    if(isset($_SESSION['user_id'])){
+        //check if user is admin or not
+        $db = new Database();
+        $id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM users WHERE id='$id'";
+        $result = $db->query($sql);
+        $result = $result->fetch(PDO::FETCH_ASSOC);
+        if($result['isAdmin'] != '1'){
+            redirect('index.php');
+        }
+
+        redirect('admin.php');
+    }else{
+        redirect('login.php');
+    }
 }else{
     //redirect to register.php
     $_SESSION['msg'] = "Registration Failed Somehow";
-    redirect('/register.php?error=Registration Failed');
+    redirect('/register.php');
 }
 
 

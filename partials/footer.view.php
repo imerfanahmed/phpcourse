@@ -1,6 +1,14 @@
-<footer>
+
     <!-- place footer here -->
-  </footer>
+    <footer class="bg-light text-center text-white text-lg-start mt-auto">
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-dark">
+    © 2023 Copyright: Erfan Ahmed Siam , All Rights Reserved
+
+  </div>
+  <!-- Copyright -->
+</footer>
+
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
