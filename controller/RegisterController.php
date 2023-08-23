@@ -114,18 +114,22 @@ if($result){
         $sql = "SELECT * FROM users WHERE id='$id'";
         $result = $db->query($sql);
         $result = $result->fetch(PDO::FETCH_ASSOC);
-        if($result['isAdmin'] != '1'){
+        if($result['isAdmin'] != 1){
             redirect('index.php');
+            die();
         }
 
         redirect('admin.php');
+        die();
     }else{
         redirect('login.php');
+        die();
     }
 }else{
     //redirect to register.php
     $_SESSION['msg'] = "Registration Failed Somehow";
     redirect('/register.php');
+    die();
 }
 
 

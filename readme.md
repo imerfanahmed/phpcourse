@@ -9,6 +9,9 @@
 1. Admin Login
     - Email: admin@admin.com
     - Password: password
+2. Student Login:
+    - Email:erfan.siam98@gmail.com
+    - Password: password
 
 # Index Page
 ![image](readme_images/1.png)

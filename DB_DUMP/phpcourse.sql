@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15;
 
 -- Dumping data for table phpcourse.payments: ~6 rows (approximately)
 DELETE FROM `payments`;
@@ -38,16 +38,16 @@ INSERT INTO `payments` (`id`, `user_id`, `amount`, `date`) VALUES
 -- Dumping structure for table phpcourse.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `username` varchar(50) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `address` varchar(500) DEFAULT NULL,
   `image` varchar(1024) DEFAULT NULL,
-  `password` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `password` varchar(500) DEFAULT NULL,
   `isAdmin` int DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57;
 
 -- Dumping data for table phpcourse.users: ~10 rows (approximately)
 DELETE FROM `users`;

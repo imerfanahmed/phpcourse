@@ -1,32 +1,40 @@
 <?php require 'partials/header.view.php'; ?>
 <?php
 require_once "./core/helper.php";
-if(isset($_SESSION['user_id'])){
-    redirect('details.php');
+if (isset($_SESSION['user_id'])) {
+  redirect('details.php');
 }
 ?>
-<form action="controller/LoginController.php"
-        method="POST"
-       class="container mt-5 w-50 m-auto border border-lg rounded p-5">
-    <h1>Login Form</h1>
-    <?php
-    // session_start();
-    if(isset($_SESSION['msg'])){
-        echo "<div class='alert alert-success'>".$_SESSION['msg']."</div>";
-        unset($_SESSION['msg']);
-    }
-
-    if(isset($_SESSION['error'])){
-      echo "<div class='alert alert-danger'>".$_SESSION['error']."</div>";
-      unset($_SESSION['error']);
+<form action="controller/LoginController.php" method="POST" class="container mt-5 w-50 m-auto border border-lg rounded p-5">
+  <h1>Login Form</h1>
+  <?php
+  // session_start();
+  if (isset($_SESSION['msg'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['msg'] . "</div>";
+    unset($_SESSION['msg']);
   }
 
-    ?>
+  if (isset($_SESSION['error'])) {
+    echo "<div class='alert alert-danger'>" . $_SESSION['error'] . "</div>";
+    unset($_SESSION['error']);
+  }
+
+  ?>
   <!-- admin details -->
   <p>
     Admin User details:
     <br>
     email: admin@admin.com
+    <br>
+    password: password
+
+  </p>
+  <hr>
+
+  <p>
+    Student User details:
+    <br>
+    email: erfan.siam98@gmail.com
     <br>
     password: password
 

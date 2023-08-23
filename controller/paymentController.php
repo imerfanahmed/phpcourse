@@ -22,6 +22,7 @@ $result = $db->query($sql);
 if($result){
     $_SESSION['msg'] = "Payment Successful";
     redirect('details.php');
+    die();
 }else{
     $_SESSION['error'] = "Payment Failed";
     redirect('details.php');

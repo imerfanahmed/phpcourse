@@ -28,14 +28,12 @@ if(!$result){
     die();
 }
 
-//5. login user
 $_SESSION['user_id'] = $result['id'];
 
-if($result['isAdmin'] == '1'){
+if($result['isAdmin'] == 1){
     redirect('admin.php');
+    die();
 }
-else{
 
 redirect('details.php');
 
-}
